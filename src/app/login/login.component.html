@@ -1,0 +1,18 @@
+<div id="parent">
+    
+    <form id="form_login" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <p class="alert alert-danger" *ngIf="validUser">Invalid Credentials</p>
+        <div class="ui-inputgroup">
+            <input type="text" [(ngModel)]="dto.userName" name="userName" pInputText placeholder="User Name">   
+            <button pButton type="button" disabled icon="pi pi-user" class="ui-button-warn"></button>      
+        </div>
+
+        <div class="ui-inputgroup">
+            <input type="password" [(ngModel)]="dto.password" name="password" pInputText placeholder="Password">   
+            <button pButton type="button" disabled icon="pi pi-question" class="ui-button-warn"></button>      
+        </div>
+
+        <button pButton type="submit" icon="pi pi-check" class="ui-button-success" label="Login"></button>
+        <button pButton type="button" class="ui-button-primary" label="Signup" (click)="signUp()"></button>
+    </form>
+</div>

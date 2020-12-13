@@ -1,0 +1,81 @@
+<div class="container">
+    <p class="alert alert-danger" *ngIf="validData">User Name Already Exists</p>
+    <div id="parent">
+        <form id="form_login" #f="ngForm" (ngSubmit)="signUp(f)">
+            <div>
+                <input 
+                    type="text" 
+                    required 
+                    class="form-control"
+                    name="userName" 
+                    #username="ngModel"
+                    [(ngModel)]="userName"  
+                    placeholder="User Name"
+                >
+                <div 
+                    *ngIf="!username.valid && username.touched"
+                    class="alert alert-danger">
+                    User Name is required
+                </div>
+            </div>
+            <div>
+                <input 
+                    type="text" 
+                    required
+                    email
+                    class="form-control" 
+                    [(ngModel)]="email" 
+                    name="email"  
+                    placeholder="Email"
+                    #mail="ngModel"
+                    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                > 
+                <div 
+                    *ngIf="!mail.valid && mail.touched"
+                    class="alert alert-danger">
+                    Email is required
+                </div>
+            </div>
+            <div>
+                <input 
+                    type="password" 
+                    required 
+                    class="form-control" 
+                    [(ngModel)]="password" 
+                    name="password"  
+                    placeholder="Password"
+                    #pass="ngModel"
+                >
+                <div 
+                    *ngIf="!pass.valid && pass.touched"
+                    class="alert alert-danger">
+                    Password is required
+                </div>
+            </div>
+            <div>
+                <input 
+                    type="text" 
+                    required 
+                    class="form-control" 
+                    [(ngModel)]="phoneNumber" 
+                    name="phoneNumber"  
+                    placeholder="Phone Number"
+                    #phone="ngModel"
+                    pattern="^[0-9]\d*$"
+                > 
+                <div 
+                    *ngIf="!phone.valid && phone.touched && !phone.dirty"
+                    class="alert alert-danger">
+                    Phone Number is required
+                </div>
+                <div 
+                    *ngIf="!phone.valid && phone.dirty"
+                    class="alert alert-danger">
+                    Phone Number Must contain only numbers
+                </div>
+            </div>   
+            <button pButton type="submit" class="ui-button-success" label="Signup" [disabled]="!f.valid"></button>
+            <button pButton type="button" class="ui-button-primary" label="Sign In" (click)="gotoLogin()"></button>
+        </form>
+    </div>
+</div>

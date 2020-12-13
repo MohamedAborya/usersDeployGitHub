@@ -1,0 +1,9 @@
+button, span{
+    margin: 10px 0px;
+    width: 80px;
+}
+p-table  tr > td {
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

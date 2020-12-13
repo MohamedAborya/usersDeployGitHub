@@ -1,0 +1,139 @@
+<!-- <div class="container">
+    <form>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="ui-inputgroup">
+                    <input type="text" pInputText placeholder="User Name">   
+                    <button pButton type="button" icon="pi pi-user" class="ui-button-warn"></button>      
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="ui-inputgroup">
+                    <input type="text" pInputText placeholder="Email">   
+                    <button pButton type="button" icon="pi pi-envelope" class="ui-button-warn"></button>      
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="ui-inputgroup">
+                    <input type="text" pInputText placeholder="Password">   
+                    <button pButton type="button" icon="pi pi-question" class="ui-button-warn"></button>      
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="ui-inputgroup">
+                    <input type="text" pInputText placeholder="Phone Number">   
+                    <button pButton type="button" icon="pi pi-tablet" class="ui-button-warn"></button>      
+                </div>
+            </div>
+        </div>
+    </form>
+</div> -->
+
+<p-dialog (onHide)="close()" [(visible)]="display">
+    <p-header *ngIf="selected_id">
+        Edit User
+    </p-header>
+    <p-header *ngIf="!selected_id">
+        Add User
+    </p-header>
+    
+    <!-- <router-outlet></router-outlet> -->
+    <div class="container">
+        <p class="alert alert-danger" *ngIf="validName">User Name Already Exists</p>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="ui-inputgroup">
+                        <input 
+                            type="text" 
+                            #username="ngModel" 
+                            class="form-control" 
+                            name="userName" 
+                            [(ngModel)]="userName" 
+                            placeholder="User Name"
+                            required
+                        >   
+                        <button pButton disabled type="button" icon="pi pi-user" class="ui-button-warn"></button>      
+                    </div>
+                    <div 
+                        *ngIf="!username.valid && username.touched"
+                        class="alert alert-danger">
+                        User Name is required
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="ui-inputgroup">
+                        <input 
+                            type="email"  
+                            required #mail="ngModel" 
+                            class="form-control" 
+                            placeholder="Email"
+                            email
+                            name="email" 
+                            [(ngModel)]="email"
+                            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                        >   
+                        <button pButton disabled type="button" icon="pi pi-envelope" class="ui-button-warn"></button>      
+                    </div>
+                    <div 
+                        *ngIf="!mail.valid && mail.touched"
+                        class="alert alert-danger">
+                        Email is required
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="ui-inputgroup">
+                        <input 
+                            type="password" 
+                            required 
+                            #pass="ngModel" 
+                            class="form-control" 
+                            placeholder="Password" 
+                            name="password" 
+                            [(ngModel)]="password"
+                        >   
+                        <button pButton disabled type="button" icon="pi pi-question" class="ui-button-warn"></button>      
+                    </div>
+                    <div 
+                        *ngIf="!pass.valid && pass.touched"
+                        class="alert alert-danger">
+                        Password is required
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="ui-inputgroup">
+                        <input 
+                            type="text" 
+                            pattern="^[0-9]\d*$" 
+                            required 
+                            #phone="ngModel" 
+                            class="form-control" 
+                            placeholder="Phone Number" 
+                            name="phoneNumber" 
+                            [(ngModel)]="phoneNumber"
+                        >   
+                        <button pButton disabled type="button" icon="pi pi-tablet" class="ui-button-warn"></button>      
+                    </div>
+                    <div 
+                        *ngIf="!phone.valid && phone.touched"
+                        class="alert alert-danger">
+                        Phone Number is required
+                    </div>
+                </div>
+            </div>
+            <button class="ui-button-success" label="Save" pButton type="submit" icon="pi pi-check" [disabled]="!f.valid" ></button>
+            <button class="ui-button-warn" label="Clear" pButton type="button" icon="pi pi-check" (click)="clear(f)"></button>
+            <button class="ui-button-danger" label="Close" pButton type="button" icon="pi pi-times" (click)="close()"></button>
+        </form>
+    </div>
+    
+    <!-- <p-footer>
+        <button class="ui-button-success" label="Save" pButton type="submit" icon="pi pi-check"></button>
+    </p-footer> -->
+</p-dialog>

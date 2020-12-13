@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="">
+            <h2>User Name :- {{user.userName}}</h2>
+            <p>Email :- {{user.email}}</p>
+            <p>Phone Number :- {{user.phoneNumber}}</p>
+            <button class="btn btn-primary" (click)="editProfile(user.id)">Edit Profile</button>
+        </div>
+        
+        <div class="col-md-6">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

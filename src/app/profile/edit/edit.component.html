@@ -1,0 +1,85 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="form-group">
+        <label for="name">
+            User Name
+        </label>
+        <input 
+            id= "name" 
+            name="userName" 
+            required 
+            #username="ngModel" 
+            [(ngModel)]="user.userName" 
+            type="text" 
+            class="form-control"
+        />
+        <div 
+            *ngIf="!username.valid && username.touched"
+            class="alert alert-danger">
+            User Name is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">
+            Email
+        </label>
+        <input 
+            id="emai" 
+            name="email" 
+            required 
+            #mail="ngModel" 
+            [(ngModel)]="user.email" 
+            type="email" 
+            class="form-control"
+            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        />
+        <div 
+            *ngIf="!mail.valid && mail.touched"
+            class="alert alert-danger">
+            Email is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password">
+            Password
+        </label>
+        <input 
+            id="password" 
+            name="password" 
+            required 
+            #pass="ngModel" 
+            [(ngModel)]="user.password" 
+            type="password" 
+            class="form-control"
+        />
+        <div 
+            *ngIf="!pass.valid && pass.touched"
+            class="alert alert-danger">
+            Password is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="phonenumber">
+            Phone Number
+        </label>
+        <input 
+            id="phonenumber" 
+            name="phoneNumber" 
+            required 
+            #phone="ngModel" 
+            [(ngModel)]="user.phoneNumber" 
+            type="text" 
+            class="form-control"
+            pattern="^[0-9]\d*$"    
+        />
+        <div 
+            *ngIf="!phone.valid && phone.touched"
+            class="alert alert-danger">
+            Phone Number is required
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Update</button>
+</form>

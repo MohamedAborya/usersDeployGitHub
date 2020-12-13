@@ -1,0 +1,13 @@
+input{
+    margin-bottom: 5px;
+}
+button{
+    margin-right: 15px;
+    margin-bottom: 5px; 
+}
+
+.ui-inputgroup {
+    display: flex;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
